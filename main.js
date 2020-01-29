@@ -95,6 +95,30 @@ const ducks = [
         name: 'Donky Kong',
         imageUrl: 'https://i.pinimg.com/originals/97/e4/58/97e4585d774f91828b69855d4533408f.jpg'
     }
-]
+];
 
+const printToDom = (divId, textToPrint) => {
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = textToPrint;
+};
+
+const duckPrinter = (inputArray) => {
+    domString = '';
+    for (i = 0; i < inputArray.length; i++) {
+        domString += `<div class="col-md-6 col-lg-4">`
+        domString +=    '<div class="card">'
+        domString +=        `<img src=${inputArray[i].imageUrl} class="card-img-top" alt="...">`
+        domString +=        '<div class="card-body">'
+        domString +=            `<h5 class="card-title">${inputArray[i].name}</h5>`
+        domString +=            `<p class="card-text">${inputArray[i].socialStatus}</p>`
+        domString +=            `<p class="card-text">${inputArray[i].diet}</p>`
+        domString +=        '</div>'
+        domString +=    '</div>'
+        domString += `</div>`
+    }
+    printToDom('duck-card', domString);
+};
+
+
+duckPrinter(ducks);
 console.log(ducks);
